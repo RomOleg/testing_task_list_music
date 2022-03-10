@@ -12,6 +12,10 @@ class ApiError extends Error{
     static internal(message) {
         return new ApiError(500, message)
     }
+
+    static badWorld(message) {
+        return new ApiError(200, message)
+    }
 }
 
 module.exports = ApiError

@@ -12,6 +12,5 @@ module.exports = async function  (req, res, next) {
         domain: `${ip}`,
         error: '',
     })
-    console.log('----111--------------111--------------', req.body, req.params, req.query, req.method, ip);
     next();
 }
