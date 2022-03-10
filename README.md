@@ -3,5 +3,5 @@
 ## install 
 ###### npm install
 ## start
-###### npm run start node
-###### npm run dev nodemob
+###### npm run start
+###### npm run dev
