@@ -5,11 +5,11 @@ const { Music } = require("../models/music");
 const ApiError = require("../error/ApiError");
 
 class AuthorController {
-  async create(req, res) {
+  async create(req, res, next) {
     try {
       const { name } = req.body;
       const author = await Author.create({ name });
-      return res.json(author);
+      next(author);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }
@@ -46,20 +46,19 @@ class AuthorController {
           offset,
         });
       }
-      res.json(author);
-      next();
+      next(author);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }
   }
 
   async getOne(req, res, next) {
-    try {
+    try { 
       const { id } = req.params;
       const author = await Author.findAll({
         where: { id },
       });
-      return res.json(author);
+      next(author);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }
@@ -78,7 +77,7 @@ class AuthorController {
             },
           },
         });
-        return res.json(author.filter((author) => author !== null));
+        next(author.filter((author) => author !== null));
       }
       if ((names && date) || names) {
         const operator = date ? Op.and : Op.or;
@@ -107,9 +106,9 @@ class AuthorController {
                 })
             )
         );
-        return res.json(author.filter((author) => author !== null)[0]);
+        next(author.filter((author) => author !== null)[0]);
       }
-      return res.json({ message: "Параметры не указаны!" });
+      return res.json({ message: "Параметры names или date не указаны!" });
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }
@@ -122,7 +121,7 @@ class AuthorController {
         where: { id },
         include: [{ model: Music }],
       });
-      return res.json(author);
+      next(author);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }
@@ -142,7 +141,7 @@ class AuthorController {
         },
         include: [{ model: Music }],
       });
-      return res.json(author);
+      next(author);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }
@@ -159,7 +158,7 @@ class AuthorController {
           where: { id },
         }
       );
-      return res.json(author);
+      next(author);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }
@@ -171,7 +170,7 @@ class AuthorController {
       const author = await Author.destroy({
         where: { id },
       });
-      return res.json(author);
+      next(author);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }
@@ -182,7 +181,7 @@ class AuthorController {
       const author = await Author.destroy({
         truncate: true,
       });
-      return res.json(author);
+      next(author);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }

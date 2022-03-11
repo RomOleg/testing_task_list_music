@@ -8,7 +8,7 @@ class MusicController {
     try {
       const { title, description, authorId } = req.body;
       const music = await Music.create({ title, description, authorId });
-      return res.json(music);
+      next(music);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }
@@ -30,7 +30,7 @@ class MusicController {
           offset,
         });
       }
-      return res.json(music);
+      next(music);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }
@@ -49,7 +49,7 @@ class MusicController {
             },
           },
         });
-        return res.json(music.filter((music) => music !== null));
+        next(music.filter((music) => music !== null));
       }
       if ((names && date) || names) {
         const operator = date ? Op.and : Op.or;
@@ -78,7 +78,7 @@ class MusicController {
                 })
             )
         );
-        return res.json(music.filter((music) => music !== null)[0]);
+        next(music.filter((music) => music !== null)[0]);
       }
       return res.json({ message: "Параметры не указаны!" });
     } catch (error) {
@@ -92,7 +92,7 @@ class MusicController {
       const music = await Music.findAll({
         where: { id },
       });
-      return res.json(music);
+      next(music);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }
@@ -133,7 +133,7 @@ class MusicController {
           }
         );
       }
-      return res.json(music);
+      next(music);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }
@@ -145,7 +145,7 @@ class MusicController {
       const music = await Music.destroy({
         where: { id },
       });
-      return res.json(music);
+      next(music);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }
@@ -156,7 +156,7 @@ class MusicController {
       const music = await Music.destroy({
         truncate: true,
       });
-      return res.json(music);
+      next(music);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }

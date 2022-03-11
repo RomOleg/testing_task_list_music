@@ -13,6 +13,8 @@ app.use(cors())
 app.use(express.json())
 // app.use(createLogMiddleware)
 app.use('/api', router)
+// логирование действий пользователя
+app.use(createLogMiddleware)
 // Обработка ошибок, последний Middleware
 app.use(errorHandler)
 
