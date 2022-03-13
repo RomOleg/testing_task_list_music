@@ -2,7 +2,14 @@
 ## Technology stack
 > NodeJS, Express, PostgreSQL, Sequelize
 ## install 
-> npm install
+1. npm install - installing modules
+2. install DB https://www.postgresql.org/
+3. copy .default.env in .env
+4. setup configuration file:
+- DB_NANE
+- DB_USER
+- DB_PASSOWORD
+- DB_PORT
 ## start
 1. copy file .default.env and rename .env
 2. npm run start
