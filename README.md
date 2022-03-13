@@ -1,12 +1,12 @@
 # testing_task_list_music
 ## Technology stack
-###### NodeJS, Express, PostgreSQL, Sequelize
+> NodeJS, Express, PostgreSQL, Sequelize
 ## install 
-###### npm install
+> npm install
 ## start
-###### copy file .default.env and rename .env
-###### npm run start
-###### npm run dev - for development
+1. copy file .default.env and rename .env
+2. npm run start
+3. npm run dev - for development
 ## api
 #### api/author
 ###### GET api/author/music - get author with list music
