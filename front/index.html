@@ -32,6 +32,7 @@
               <button id="author/get/music" type="button" class="btn btn-primary mb-1">
                 GET api/author/music
               </button>
+              <input id="text-author/get/music/authors" type="text" placeholder="id,id,..,id">
             </div>
           </div>
           <div class="row">
@@ -56,8 +57,8 @@
               <button id="author/get/" type="button" class="btn btn-primary mb-1">
                 GET api/author/
               </button>
-              <input id="text-author/get/authorId" type="text" placeholder="authorId">
-              <input id="text-author/get/musicId" type="text" placeholder="musicId">
+              <input id="text-author/get/authorId" disabled type="text" placeholder="authorId">
+              <!-- <input id="text-author/get/musicId" type="text" placeholder="musicId"> -->
               <input id="text-author/get/limit" type="text" placeholder="limit">
               <input id="text-author/get/page" type="text" placeholder="page">
             </div>
@@ -73,7 +74,8 @@
           <div class="row">
             <div class="col">
               <button id="author/put/" type="button" class="btn btn-warning mb-1">PUT api/author/</button>
-              <input id="text-author/put/" type="text" placeholder="name">
+              <input id="text-author/put/id" type="text" placeholder="id">
+              <input id="text-author/put/name" type="text" placeholder="name">
             </div>
           </div>
           <div class="row">
@@ -98,17 +100,17 @@
           <div class="row">
             <div class="col">
               <button id="music/post/" type="button" class="btn btn-success mb-1">
-                POST api/author
+                POST api/music
               </button>
-              <input id="text-music/post/" type="text" placeholder="title">
-              <input id="text-music/post/" type="text" placeholder="description">
-              <input id="text-music/post/" type="text" placeholder="authorId">
+              <input id="text-music/post/title" type="text" placeholder="title">
+              <input id="text-music/post/description" type="text" placeholder="description">
+              <input id="text-music/post/authorId" type="text" placeholder="authorId">
             </div>
           </div>
           <div class="row">
             <div class="col">
               <button id="music/get/like" type="button" class="btn btn-primary mb-1">
-                GET api/author/like
+                GET api/music/like
               </button>
               <input id="text-music/get/like/name" type="text" placeholder="names">
               <input id="text-music/get/like/date" type="text" placeholder="date">
@@ -117,33 +119,38 @@
           <div class="row">
             <div class="col">
               <button id="music/get/" type="button" class="btn btn-primary mb-1">
-                GET api/author/
+                GET api/music/
               </button>
+              <input id="text-music/get/musicId" type="text" disabled placeholder="musicId">
+              <input id="text-music/get/limit" type="text" placeholder="limit">
+              <input id="text-music/get/page" type="text" placeholder="page">
             </div>
           </div>
           <div class="row">
             <div class="col">
               <button id="music/get/id" type="button" class="btn btn-primary mb-1">
-                GET api/author/:id
+                GET api/music/:id
               </button>
               <input id="text-music/get/id" type="text" placeholder="id">
             </div>
           </div>
           <div class="row">
             <div class="col">
-              <button id="music/put/" type="button" class="btn btn-warning mb-1">PUT api/author/</button>
-              <input id="text-music/put/" type="text" placeholder="name">
+              <button id="music/put/" type="button" class="btn btn-warning mb-1">PUT api/music/</button>
+              <input id="text-music/put/id" type="text" placeholder="id">
+              <input id="text-music/put/title" type="text" placeholder="title">
+              <input id="text-music/put/description" type="text" placeholder="description">
             </div>
           </div>
           <div class="row">
             <div class="col">
-              <button id="music/delete/id" type="button" class="btn btn-danger mb-1">DELETE api/author/:id</button>
+              <button id="music/delete/id" type="button" class="btn btn-danger mb-1">DELETE api/music/:id</button>
               <input id="text-music/delete/id" type="text" placeholder="id">
             </div>
           </div>
           <div class="row">
             <div class="col">
-              <button id="music/delete/" type="button" class="btn btn-danger mb-1">DELETE api/author/</button>
+              <button id="music/delete/" type="button" class="btn btn-danger mb-1">DELETE api/music/</button>
             </div>
           </div>
         </div>

@@ -1,10 +1,9 @@
 const ApiError = require("../error/ApiError");
 
-module.exports = async function (req, res, next) {
+module.exports = function (req, res, next) {
   const badWorlds = "монеточка";
-
   if (badWorlds === buildWorld(req.body.name.toLowerCase().trim())) {
-    next(ApiError.badWorld("Название являеться недопустимым"));
+    next(ApiError.badWorld("Название является недопустимым"));
   }
   next();
 };
@@ -54,7 +53,6 @@ const buildWorld = (world) => {
         // Если буква совпадает с буквой в нашем списке.
         if (letter === w) {
           // Заменяем эту букву на ключ словаря.
-          console.log(w, key);
           world = world.replace(w, key);
         }
       }

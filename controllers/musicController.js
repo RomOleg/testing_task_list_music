@@ -4,7 +4,7 @@ const { Music } = require("../models/music");
 const ApiError = require("../error/ApiError");
 
 class MusicController {
-  async create(req, res) {
+  async create(req, res, next) {
     try {
       const { title, description, authorId } = req.body;
       const music = await Music.create({ title, description, authorId });
@@ -69,8 +69,8 @@ class MusicController {
                       },
                       {
                         createdAt: {
-                          [Op.gte]: moment.utc(date),
-                          [Op.lt]: moment.utc(date).add(1, "day"),
+                          [Op.gte]: moment.utc(date || '2000-01-01'),
+                          [Op.lt]: moment.utc(date || '2000-01-01').add(1, "day"),
                         },
                       },
                     ],

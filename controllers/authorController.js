@@ -67,6 +67,7 @@ class AuthorController {
   async getAuthorLike(req, res, next) {
     try {
       const { names, date } = req.query;
+      console.log('\n\n\n\n', names, date);
       let author;
       if (date && !names) {
         author = await Author.findAll({
@@ -97,8 +98,8 @@ class AuthorController {
                       },
                       {
                         createdAt: {
-                          [Op.gte]: moment.utc(date),
-                          [Op.lt]: moment.utc(date).add(1, "day"),
+                          [Op.gte]: moment.utc(date || '2000-01-01'),
+                          [Op.lt]: moment.utc(date || '2000-01-01').add(1, "day"),
                         },
                       },
                     ],
@@ -106,7 +107,7 @@ class AuthorController {
                 })
             )
         );
-        next(author.filter((author) => author !== null)[0]);
+        return next(author.filter((author) => author !== null)[0]);
       }
       return res.json({ message: "Параметры names или date не указаны!" });
     } catch (error) {
@@ -147,7 +148,7 @@ class AuthorController {
     }
   }
 
-  async update(req, res) {
+  async update(req, res, next) {
     try {
       const { id, name } = req.body;
       const author = await Author.update(
@@ -164,7 +165,7 @@ class AuthorController {
     }
   }
 
-  async delete(req, res) {
+  async delete(req, res, next) {
     try {
       const { id } = req.params;
       const author = await Author.destroy({
@@ -176,7 +177,7 @@ class AuthorController {
     }
   }
 
-  async deleteAll(req, res) {
+  async deleteAll(req, res, next) {
     try {
       const author = await Author.destroy({
         truncate: true,
